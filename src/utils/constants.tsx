@@ -1,1 +1,0 @@
-export const PROFILE_IMG="https://avatars.githubusercontent.com/u/32704419?s=400&u=4495132e72bdde6a31ae449e62098e5c2af15eab&v=4"

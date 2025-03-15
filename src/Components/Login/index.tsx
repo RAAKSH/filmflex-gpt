@@ -6,14 +6,12 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { auth } from "../../utils/firebase.js";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/userSlice.js";
-import { PROFILE_IMG } from "../../utils/constants.js";
+import { BACK_DROP, PROFILE_IMG } from "../../utils/constants.js";
 
 const Login = () => {
-  const navigate = useNavigate();
   const [toggleSignUp, setToggleSignUp] = useState(false);
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
@@ -56,7 +54,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
+              
             })
             .catch((error) => {
               setError(error);
@@ -88,7 +86,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
+             
             })
             .catch((error) => {
               setError(error);
@@ -108,7 +106,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/42a0bce6-fc59-4c1c-b335-7196a59ae9ab/web/IN-en-20250303-TRIFECTA-perspective_d5f81427-d6cf-412d-8e86-2315671b9be1_large.jpg"
+          src={BACK_DROP}
           alt="Backdrop"
         />
       </div>

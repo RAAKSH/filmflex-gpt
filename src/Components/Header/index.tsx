@@ -1,15 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Filmflex from "../../assets/Filmflex.png";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase.js";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { removeUser } from "../../utils/userSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../../utils/userSlice.js";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const userInfo = useSelector((store) => store?.userReducer);
+  const userInfo = useSelector((store) => store?.user);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, displayName, email, photoURL } = user;
+        dispatch(addUser({ uid, displayName, email, photoURL }));
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -36,12 +51,11 @@ const Header = () => {
             src={userInfo?.photoURL}
             alt="Profile"
           />
-          
 
           {isDropdownOpen && (
             <div className="absolute right-0 mt-12 w-40 bg-black text-white rounded-lg shadow-lg">
               <ul className="py-2">
-              <li className="px-4 py-2">
+                <li className="px-4 py-2">
                   <span className="text-red-700">{userInfo?.displayName}</span>
                 </li>
                 <li className="px-4 py-2 hover:bg-gray-800 cursor-pointer">
