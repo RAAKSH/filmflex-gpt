@@ -9,7 +9,7 @@ const gptSlice = createSlice({
     movieNames: null,
   },
   reducers: {
-    toggleGPTSearchView: (state, action) => {
+    toggleGPTSearchView: (state) => {
       state.showGPTSearch = !state?.showGPTSearch;
     },
     addGPTMovieResult:(state,action)=>{
@@ -21,5 +21,6 @@ const gptSlice = createSlice({
   },
 });
 
+// eslint-disable-next-line no-unsafe-optional-chaining
 export const { toggleGPTSearchView,addGPTMovieResult } = gptSlice?.actions;
 export default gptSlice.reducer;
