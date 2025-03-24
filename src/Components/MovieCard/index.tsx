@@ -11,6 +11,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ posterPath, movie }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [trailer, setTrailer] = useState([]);
 
+  if(!posterPath) return null;
+
   const getMovieVideo = async () => {
     const res = await fetch(
       `https://api.themoviedb.org/3/movie/${movie?.id}/videos`,
@@ -46,13 +48,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ posterPath, movie }) => {
           />
         ) : (
           <div className="absolute top-0 left-0 w-64 h-64 bg-black bg-opacity-90 p-2 rounded-lg shadow-lg">
-            {(trailer?.key && isHovered) ? (
+            {trailer?.key && isHovered ? (
               <iframe
-              className="w-full h-32 rounded-md"
-              src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=0&controls=0&modestbranding=1&rel=0`}
-              title="Movie Trailer"
-              allow="autoplay; encrypted-media"
-            ></iframe>
+                className="w-full h-32 rounded-md"
+                src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=0&controls=0&modestbranding=1&rel=0`}
+                title="Movie Trailer"
+                allow="autoplay; encrypted-media"
+              ></iframe>
             ) : (
               <p className="text-white text-sm">No Trailer Available</p>
             )}

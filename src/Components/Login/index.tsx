@@ -108,10 +108,11 @@ const Login = () => {
         <img
           src={BACK_DROP}
           alt="Backdrop"
+          //className="h-screen object-cover"
         />
       </div>
 
-      <form className="absolute p-12 bg-black/80 w-3/12 my-36 right-0 left-0 mx-auto  text-white z-20 rounded-2xl">
+      <form className="absolute p-12 bg-black/80  w-full md:w-3/12 my-36 right-0 left-0 mx-auto  text-white z-20 rounded-2xl">
         <h1 className="text-2xl font-bold py-4">
           {toggleSignUp ? "Sign Up" : "Sign In"}
         </h1>

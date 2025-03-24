@@ -7,8 +7,11 @@ const PromoContainer = () => {
 
   const trendingMovie = movie?.[0];
 
+  console.log("-asdad",trendingMovie);
+  
+
   return (
-    <div>
+    <div className="md:pt-0 pt-[10%] bg-black">
       <VideoTitle
         title={trendingMovie?.title}
         overview={trendingMovie?.overview}

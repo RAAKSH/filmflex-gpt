@@ -7,9 +7,16 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzRlYjg1MTg4OTEwOWYxNDMxYzRlZWViMmU0YWVhYyIsIm5iZiI6MTc0MTg2MjI1NC41NDEsInN1YiI6IjY3ZDJiNTZlMmVhMTM4OWY5ZjYwOGQzMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SbrKrE9tA1AgOjOumxY_k45TxUa_LILVcviKQ6DhgxM",
+    Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`
   },
 };
 
-export const MOVIE_IMAGE_PATH="https://image.tmdb.org/t/p/w500"
+export const MOVIE_IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];
+
+export const OPEN_AI_KEY =import.meta.env.REACT_APP_OPENAI_API_KEY;

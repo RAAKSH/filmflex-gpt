@@ -7,13 +7,17 @@ type MovieListProps = {
 };
 const MovieList: React.FC<MovieListProps> = ({ title, movie }) => {
   return (
-    <div className="px-10">
+    <div className="md:px-10 ">
       <h1 className="text-bold text-2xl text-white py-4">{title}</h1>
 
       <div className="flex overflow-x-scroll">
         <div className="flex">
           {movie?.map((item) => (
-            <MovieCard key={item?.id} posterPath={item?.poster_path}  movie={item}/>
+            <MovieCard
+              key={item?.id}
+              posterPath={item?.poster_path}
+              movie={item}
+            />
           ))}
         </div>
         ;
