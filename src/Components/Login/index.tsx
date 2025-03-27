@@ -108,7 +108,7 @@ const Login = () => {
         <img
           src={BACK_DROP}
           alt="Backdrop"
-          className="h-screen object-cover"
+          //className="h-screen"
         />
       </div>
 

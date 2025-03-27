@@ -86,7 +86,11 @@ const Header = () => {
               />
 
               {isDropdownOpen && (
-                <div className="absolute right-0 top-full mt-2 w-40 bg-black text-white rounded-lg shadow-lg">
+                <div
+                  className="absolute right-0   top-full mt-2  pt-0 w-60 bg-black text-white rounded-lg shadow-lg"
+                  onMouseEnter={() => setIsDropdownOpen(true)}
+                  onMouseLeave={() => setIsDropdownOpen(false)}
+                >
                   <ul className="py-2">
                     <li className="px-4 py-2">
                       <span className="text-red-700">
