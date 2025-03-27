@@ -61,7 +61,7 @@ const Header = () => {
       {userInfo && (
         <div className="relative flex items-center p-2">
           <div className="flex items-center gap-4">
-            {/* {showGPT && (
+            {showGPT && (
               <select
                 className="p-2 m-2 bg-gray-900 text-white"
                 onChange={handleLanguageChange}
@@ -72,7 +72,14 @@ const Header = () => {
                   </option>
                 ))}
               </select>
-            )} */}
+            )}
+
+            <button
+              className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+              onClick={handleSearch}
+            >
+              {showGPT ? "Homepage" : "GPT Search"}
+            </button>
 
             <div
               className="relative"
